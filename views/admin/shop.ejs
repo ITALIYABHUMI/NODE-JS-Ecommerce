@@ -1,0 +1,99 @@
+<%- include('header') %>
+
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="/adminpanel">Home</a>
+                    <a class="breadcrumb-item text-dark" href="adminshop">Shop</a>
+                    <span class="breadcrumb-item active">Shop List</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+
+    <!-- Shop Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <!-- Shop Sidebar Start -->
+            <div class="col-lg-3 col-md-4">
+                <!-- Price Start -->
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter
+                        by Category</span></h5>
+                <div class="bg-light p-4 mb-30">
+                    <form method="post" action="/categorychange">
+                        <button type="submit" class="btn btn-outline-warning my-2" value="Allcategory" name="Allcategory">All
+                            Category</button>
+                        <%category.map((val)=>{%>
+                            <div
+                                class="d-flex align-items-center justify-content-between">
+                                <button type="submit" name="category" class="btn btn-outline-warning d-block my-2"
+                                    value="<%=val.id%>">
+                                    <%=val.category%>
+                                </button>
+                                <div>
+                                    <a href="/deletecategory?id=<%=val.id%>" class="btn btn-primary">
+                                        <i class="fa fa-trash text-white "></i>
+                                    </a>
+                                    <a href="/editcategory?id=<%=val.id%>" class="btn btn-primary mx-3">
+                                        <i class="fa fa-edit text-white "></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <%})%>
+                    </form>
+                </div>
+                <!-- Price End -->
+            </div>
+            <!-- Shop Sidebar End -->
+
+
+            <!-- Shop Product Start -->
+            <div class="col-lg-9 col-md-8">
+                <div class="row pb-3">
+                    <% product.map((val)=>{ %>
+                        <div class="col-lg-3 col-md-6 col-sm-6 pb-1">
+                            <div class="product-item bg-light mb-4 pt-3">
+                                <div
+                                    class="product-img position-relative overflow-hidden d-flex justify-content-center align-items-center">
+                                    <img class="public/img-fluid w-50" src="<%=val.image%>" alt="">
+                                    <div class="product-action">
+                                        <a class="btn btn-outline-dark btn-square" href="/editproduct?id=<%=val.id%>"><i
+                                                class="fa fa-edit"></i></a>
+                                        <a class="btn btn-outline-dark btn-square"
+                                            href="/deleteproduct?id=<%=val.id%>"><i class="fa fa-trash"></i></a>
+                                    </div>
+                                </div>
+                                <div class="text-center py-4">
+                                    <a class="h6 text-decoration-none text-truncate" href="">
+                                        <%=val.name%>
+                                    </a>
+                                    <div class="d-flex align-items-center justify-content-center mt-2">
+                                        <h5>
+                                            <%=val.price%>
+                                        </h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center mb-1">
+                                        <small class="fa fa-star text-primary mr-1"></small>
+                                        <small class="fa fa-star text-primary mr-1"></small>
+                                        <small class="fa fa-star text-primary mr-1"></small>
+                                        <small class="fa fa-star text-primary mr-1"></small>
+                                        <small class="fa fa-star-half-alt text-primary mr-1"></small>
+                                        <small>(99)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                </div>
+            </div>
+            <!-- Shop Product End -->
+        </div>
+    </div>
+    <!-- Shop End -->
+
+
+    <%- include('footer') %>

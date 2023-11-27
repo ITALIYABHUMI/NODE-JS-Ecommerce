@@ -1,0 +1,78 @@
+<%-include('header')%>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Focus Admin: Widget</title>
+
+        <!-- ================= Favicon ================== -->
+        <!-- Standard -->
+        <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+        <!-- Retina iPad Touch Icon-->
+        <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+        <!-- Retina iPhone Touch Icon-->
+        <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+        <!-- Standard iPad Touch Icon-->
+        <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+        <!-- Standard iPhone Touch Icon-->
+        <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+
+        <!-- Styles -->
+        <link href="public/css/lib/font-awesome.min.css" rel="stylesheet">
+        <link href="public/css/lib/themify-icons.css" rel="stylesheet">
+        <link href="public/css/lib/bootstrap.min.css" rel="stylesheet">
+        <link href="public/css/lib/helper.css" rel="stylesheet">
+        <link href="public/css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <div class="unix-login my-5">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <div class="login-content">
+                            <div class="login-form my-5">
+                                <form action="productAdd" method="post" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label>Category</label>
+                                        <select name="categoryId" class="form-control">
+                                            <option>Select Category</option>
+                                            <%category.map((val)=>{%>
+                                                <option name="<%=val.id%>" value="<%=val.id%>">
+                                                    <%=val.category%>
+                                                </option>
+                                                <%})%>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" name="name"
+                                            placeholder="Add Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Price</label>
+                                        <input type="text" class="form-control" name="price"
+                                            placeholder="Add Price">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Image</label>
+                                        <input type="file" class="form-control" name="image">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    </html>
+
+    <%-include('footer')%>
